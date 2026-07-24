@@ -11,8 +11,8 @@ load_dotenv()
 
 @dataclass(frozen=True)
 class Config:
-    region: str = os.getenv("AWS_REGION", "us-east-1")
-    bucket: str = os.getenv("LAKE_BUCKET", "your-claims-lakehouse-bucket")
+    region: str = os.getenv("AWS_REGION", "${AWS_REGION}")
+    bucket: str = os.getenv("LAKE_BUCKET", "${LAKE_BUCKET}")
     glue_database: str = os.getenv("GLUE_DATABASE", "claims_lakehouse")
     raw_dir: str = os.getenv("RAW_DATA_DIR", "data/raw")
 
@@ -20,6 +20,10 @@ class Config:
     bronze_prefix: str = "bronze"
     silver_prefix: str = "silver"
     gold_prefix: str = "gold"
+
+    # Track the access keys explicitly
+    aws_access_key: str = os.environ.get("AWS_ACCESS_KEY_ID", "${AWS_ACCESS_KEY_ID}")
+    aws_secret_key: str = os.environ.get("AWS_SECRET_ACCESS_KEY", "${AWS_SECRET_ACCESS_KEY}")
 
 
 config = Config()
