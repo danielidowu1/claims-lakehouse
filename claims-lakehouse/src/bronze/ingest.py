@@ -61,7 +61,7 @@ def upload(files: list[pathlib.Path], execution_date: str | None = None) -> None
                 str(f),
                 config.bucket,
                 key,
-                config=transfer_config,
+                Config=transfer_config,
                 ExtraArgs={"Metadata": {"source-file": f.name, "load-date": load_date}},
             )
         except Exception as e:
