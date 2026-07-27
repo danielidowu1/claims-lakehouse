@@ -31,3 +31,4 @@ data/processed/
 .DS_Store
 .idea/
 .vscode/
+src/bronze/ingest.py
