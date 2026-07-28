@@ -21,9 +21,9 @@ This is a learning-in-public project, and **everyone is welcome to contribute** 
 
 This project transforms raw claims into an analytics-ready model that answers the questions payers, providers, and health-policy teams actually ask — cost & spend, utilization, diagnosis mix, chronic conditions, demographics, provider and temporal trends, and drug spend — while demonstrating a full medallion architecture, serverless AWS, dimensional modeling, and CI/CD. Because the data is **synthetic**, the goal is to demonstrate the methodology, not to produce real clinical findings.
 
-👉 Full list of questions, plus the concrete metrics the gold layer targets: [`docs/objectives.md`](docs/objectives.md).
+Full list of questions, plus the concrete metrics the gold layer targets: [`docs/objectives.md`](docs/objectives.md).
 
-## 🏗️ What we're building
+## What we're building
 
 A production-shaped data platform that ingests raw Medicare claims, refines them through medallion layers, and serves an analytics-ready star schema you can query and visualize.
 
@@ -45,12 +45,11 @@ A production-shaped data platform that ingests raw Medicare claims, refines them
 
 Everything is **serverless and cost-safe** — designed to stay inside AWS free-tier limits (see [Cost guardrails](#-cost-guardrails)).
 
-## 🗂️ The data
+## The data
 
 We use **public, synthetic** Medicare claims data — no privacy or compliance concerns, safe to share and post about.
 
 - **Default:** [CMS DE-SynPUF (2008–2010)](https://www.cms.gov/data-research/statistics-trends-and-reports/medicare-claims-synthetic-public-use-files/cms-2008-2010-data-entrepreneurs-synthetic-public-use-file-de-synpuf) — pre-split into 20 samples; we start with **sample 1** to keep volumes tiny. Easiest for new contributors to get running.
-- **Alternative:** [CMS Synthetic Enrollment, FFS Claims & PDE](https://data.cms.gov/collection/synthetic-medicare-enrollment-fee-for-service-claims-and-prescription-drug-event) — newer, Synthea-generated, RIF format, ICD-10. More realistic, heavier silver layer.
 
 > The data is **not committed** to this repo. See [`data/raw/README.md`](data/raw/README.md) for how to fetch it locally.
 
@@ -70,7 +69,7 @@ We use **public, synthetic** Medicare claims data — no privacy or compliance c
 
 ```bash
 # 1. Clone
-git clone https://github.com/<your-username>/claims-lakehouse.git
+git clone https://github.com/danielidowu1/claims-lakehouse.git
 cd claims-lakehouse
 
 # 2. Set up environment
@@ -80,7 +79,7 @@ pip install -r requirements.txt
 # 3. Get the data (see data/raw/README.md), then drop files in data/raw/
 
 # 4. Configure AWS + bucket
-cp .env.example .env   # then edit with your bucket name / region
+cp .env  # then edit with your bucket name / region
 
 # 5. Run the bronze layer
 python -m src.bronze.ingest
@@ -90,8 +89,6 @@ See the [Makefile](Makefile) for shortcuts (`make bronze`, `make test`, `make li
 
 ## 🗺️ Roadmap
 
-Each milestone is a shippable piece — and a good moment to post an update.
-
 - [ ] **Phase 0 — Foundation:** repo, README, budget alert, S3 buckets via Terraform
 - [ ] **Phase 1 — Bronze:** land raw claims in S3 with load metadata
 - [ ] **Phase 2 — Silver:** clean, type, dedupe, conform → partitioned Parquet
@@ -99,7 +96,7 @@ Each milestone is a shippable piece — and a good moment to post an update.
 - [ ] **Phase 4 — CI/CD:** GitHub Actions running tests on PRs + scheduled pipeline
 - [ ] **Phase 5 — Dashboard:** Streamlit on Athena + project retrospective
 
-## 🤝 Contributing
+## Contributing
 
 We'd love your help! Start with [CONTRIBUTING.md](CONTRIBUTING.md) and look for issues labeled **`good first issue`**. Ways to help:
 
@@ -110,14 +107,13 @@ We'd love your help! Start with [CONTRIBUTING.md](CONTRIBUTING.md) and look for 
 
 All skill levels welcome. Be kind — see our [Code of Conduct](CODE_OF_CONDUCT.md).
 
-## 💸 Cost guardrails
+## Cost guardrails
 
 The AWS free tier changed in **July 2025**: new accounts get **$200 in credits over 6 months**, not 12 months of free usage. To stay free:
 
 - ✅ Set an **AWS Budgets** alert on day one.
 - ✅ Stay serverless: S3 + Lambda + Athena + Glue Catalog.
-- ❌ Avoid NAT Gateways (~$33/mo), EMR, Redshift, managed Airflow (MWAA), and idle RDS/EC2.
-- ❌ Delete orphaned EBS volumes, snapshots, and unattached Elastic IPs.
+
 
 ## 📄 License & attribution
 
