@@ -1,4 +1,4 @@
-# 🏥 Claims Lakehouse
+# Claims Lakehouse
 
 > An open, build-in-public data engineering project: an end-to-end **medallion architecture** pipeline over **synthetic Medicare claims data**, running on the **AWS free tier**, orchestrated with **GitHub Actions**.
 
@@ -15,7 +15,7 @@ This is a learning-in-public project, and **everyone is welcome to contribute** 
 
 ---
 
-## 🎯 Objective
+## Objective
 
 **Turn raw Medicare claims into answers about cost, care, and chronic disease.**
 
@@ -53,7 +53,7 @@ We use **public, synthetic** Medicare claims data — no privacy or compliance c
 
 > The data is **not committed** to this repo. See [`data/raw/README.md`](data/raw/README.md) for how to fetch it locally.
 
-## 🧱 Tech stack
+## Tech stack
 
 | Layer | Tooling |
 |---|---|
@@ -65,7 +65,7 @@ We use **public, synthetic** Medicare claims data — no privacy or compliance c
 | Dashboard | Streamlit on Athena |
 | Quality/CI | pytest, ruff |
 
-## 🚀 Quick start
+## Quick start
 
 ```bash
 # 1. Clone
@@ -87,7 +87,7 @@ python -m src.bronze.ingest
 
 See the [Makefile](Makefile) for shortcuts (`make bronze`, `make test`, `make lint`).
 
-## 🗺️ Roadmap
+## Roadmap
 
 - [ ] **Phase 0 — Foundation:** repo, README, budget alert, S3 buckets via Terraform
 - [ ] **Phase 1 — Bronze:** land raw claims in S3 with load metadata
@@ -111,10 +111,10 @@ All skill levels welcome. Be kind — see our [Code of Conduct](CODE_OF_CONDUCT.
 
 The AWS free tier changed in **July 2025**: new accounts get **$200 in credits over 6 months**, not 12 months of free usage. To stay free:
 
-- ✅ Set an **AWS Budgets** alert on day one.
-- ✅ Stay serverless: S3 + Lambda + Athena + Glue Catalog.
+- Set an **AWS Budgets** alert on day one.
+- Stay serverless: S3 + Lambda + Athena + Glue Catalog.
 
 
-## 📄 License & attribution
+## License & attribution
 
 Code is licensed under the [MIT License](LICENSE). Data is public/synthetic, provided by the U.S. Centers for Medicare & Medicaid Services (CMS); no real beneficiary data is used.
