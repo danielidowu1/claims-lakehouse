@@ -40,7 +40,7 @@ A production-shaped data platform that ingests raw Medicare claims, refines them
    🟡 GOLD    →  star schema: fact_claims + dim_* tables
           │
           ▼
-   📊 Athena queries + Streamlit dashboard
+ Athena queries + Streamlit dashboard
 ```
 
 Everything is **serverless and cost-safe** — designed to stay inside AWS free-tier limits (see [Cost guardrails](#-cost-guardrails)).
