@@ -1,13 +1,13 @@
 # Contributing to Claims Lakehouse
 
-Thanks for your interest — contributions of every size are welcome. 🎉
+Thanks for your interest — contributions of every size are welcome. 
 
 ## Ways to contribute
 
-- 🐛 **Report a bug** or 💡 **suggest a feature** by opening an issue.
-- 🌱 **Pick a `good first issue`** — these are scoped for newcomers.
-- 🔧 **Take a roadmap task** (bronze / silver / gold / CI / dashboard).
-- 📖 **Improve docs** — clarity fixes are genuinely valuable.
+-  **Report a bug** or **suggest a feature** by opening an issue.
+-  **Pick a `good first issue`** — these are scoped for newcomers.
+-  **Take a roadmap task** (bronze / silver / gold / CI / dashboard).
+-  **Improve docs** — clarity fixes are genuinely valuable.
 
 ## Workflow
 
