@@ -12,7 +12,7 @@ install:
 	pip install -r requirements.txt
 
 lint:
-	ruff check src tests
+	python -m ruff check src tests
 
 test:
 	pytest -q

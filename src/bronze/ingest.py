@@ -17,15 +17,12 @@ import sys
 
 import boto3
 
-from boto3.s3.transfer import TransferConfig
-
 from src.common.config import config
 
 DATASET = "desynpuf"  # change to "rif" if using the Synthea/RIF dataset
 
 
 def discover_files(raw_dir: str) -> list[pathlib.Path]:
-    
     root = pathlib.Path(raw_dir)
     if not root.exists():
         print(f"[bronze] raw dir '{raw_dir}' not found. See data/raw/README.md.")
@@ -34,43 +31,19 @@ def discover_files(raw_dir: str) -> list[pathlib.Path]:
     return files
 
 
-def upload(files: list[pathlib.Path], execution_date: str | None = None) -> None:
-    
-
-    # Ensure idempotency by allowing a locked-in date
-    load_date = execution_date or dt.date.today().isoformat()
-
-    # Optimize for large CMS files
-    transfer_config = TransferConfig(
-        multipart_threshold=1024 * 1024 * 100,  # 100 MB
-        max_concurrency=10,
-        multipart_chunksize=1024 * 1024 * 50,  # 50 MB
-        use_threads=True,
-    )
-
+def upload(files: list[pathlib.Path]) -> None:
+    load_date = dt.date.today().isoformat()
     s3 = boto3.client("s3", region_name=config.region)
-    failed_files = []
-    
     for f in files:
         key = f"{config.bronze_prefix}/{DATASET}/load_date={load_date}/{f.name}"
         print(f"[bronze] uploading {f.name} -> s3://{config.bucket}/{key}")
-
-        # Handle network/upload errors gracefully
-        try: 
-            s3.upload_file(
-                str(f),
-                config.bucket,
-                key,
-                Config=transfer_config,
-                ExtraArgs={"Metadata": {"source-file": f.name, "load-date": load_date}},
-            )
-        except Exception as e:
-            print(f"[ERROR] failed to upload {f.name}: {e}")
-            failed_files.append(f.name)
-
-    if failed_files:
-        print(f"[bronze] completed with failures. Failedfiles:{failed_files}")
-        sys.exit(1)
+        s3.upload_file(
+            str(f),
+            config.bucket,
+            key,
+            ExtraArgs={"Metadata": {"source-file": f.name, "load-date": load_date}},
+        )
+    print(f"[bronze] done. {len(files)} file(s) landed for load_date={load_date}.")
 
 
 def main() -> int:

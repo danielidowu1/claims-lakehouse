@@ -31,3 +31,5 @@ data/processed/
 .DS_Store
 .idea/
 .vscode/
+
+tests/test_silver.py

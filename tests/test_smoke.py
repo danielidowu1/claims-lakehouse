@@ -1,6 +1,6 @@
 """Smoke tests — keep CI green from day one, give contributors a template."""
-from src.common.config import config
 from src.bronze import ingest
+from src.common.config import config
 
 
 def test_config_defaults_present():

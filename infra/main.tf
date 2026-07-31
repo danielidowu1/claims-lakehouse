@@ -120,4 +120,3 @@ output "glue_role_arn" {
   value       = aws_iam_role.glue_service_role.arn
   description = "The IAM Role ARN that AWS Glue uses to execute tasks."
 }
-
