@@ -1,6 +1,5 @@
 # Contributing to Claims Lakehouse
 
-<<<<<<< HEAD
 Thanks for your interest — contributions of every size are welcome. 🎉
 
 ## Ways to contribute
@@ -9,16 +8,6 @@ Thanks for your interest — contributions of every size are welcome. 🎉
 - 🌱 **Pick a `good first issue`** — these are scoped for newcomers.
 - 🔧 **Take a roadmap task** (bronze / silver / gold / CI / dashboard).
 - 📖 **Improve docs** — clarity fixes are genuinely valuable.
-=======
-Thanks for your interest — contributions of every size are welcome. 
-
-## Ways to contribute
-
--  **Report a bug** or **suggest a feature** by opening an issue.
--  **Pick a `good first issue`** — these are scoped for newcomers.
--  **Take a roadmap task** (bronze / silver / gold / CI / dashboard).
--  **Improve docs** — clarity fixes are genuinely valuable.
->>>>>>> 823d582f8fbf955c55561d9c82167cd0e1986a3a
 
 ## Workflow
 
