@@ -32,3 +32,5 @@ data/processed/
 .idea/
 .vscode/
 
+# Metastore_db
+metastore_db/
