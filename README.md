@@ -7,7 +7,7 @@
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
 
-This is a learning-in-public project, and **everyone is welcome to contribute** — whether you're a beginner picking up your first "good first issue" or an experienced engineer improving the architecture. Follow along, open a PR, or just star the repo to watch it grow.
+This is a learning-in-public project, and **everyone is welcome to contribute**, whether you're a beginner picking up your first "good first issue" or an experienced engineer improving the architecture. Follow along, open a PR, or just star the repo to watch it grow.
 
 <p align="center">
   <img src="docs/architecture.svg" alt="Claims Lakehouse architecture flow" width="620">
@@ -19,7 +19,7 @@ This is a learning-in-public project, and **everyone is welcome to contribute** 
 
 **Turn raw Medicare claims into answers about cost, care, and chronic disease.**
 
-This project transforms raw claims into an analytics-ready model that answers the questions payers, providers, and health-policy teams actually ask — cost & spend, utilization, diagnosis mix, chronic conditions, demographics, provider and temporal trends, and drug spend — while demonstrating a full medallion architecture, serverless AWS, dimensional modeling, and CI/CD. Because the data is **synthetic**, the goal is to demonstrate the methodology, not to produce real clinical findings.
+This project transforms raw claims into an analytics-ready model that answers the questions payers, providers, and health-policy teams actually ask, cost & spend, utilization, diagnosis mix, chronic conditions, demographics, provider and temporal trends, and drug spend, while demonstrating a full medallion architecture, serverless AWS, dimensional modeling, and CI/CD. Because the data is **synthetic**, the goal is to demonstrate the methodology, not to produce real clinical findings.
 
 Full list of questions, plus the concrete metrics the gold layer targets: [`docs/objectives.md`](docs/objectives.md).
 
@@ -31,13 +31,13 @@ A production-shaped data platform that ingests raw Medicare claims, refines them
   Source (CMS synthetic claims)
           │
           ▼
-   🟤 BRONZE  →  raw claims landed in S3, as-is + load metadata
+        BRONZE  →  raw claims landed in S3, as-is + load metadata
           │
           ▼
-   ⚪ SILVER  →  cleaned, typed, deduplicated, conformed (Parquet)
+        SILVER  →  cleaned, typed, deduplicated, conformed (Parquet)
           │
           ▼
-   🟡 GOLD    →  star schema: fact_claims + dim_* tables
+        GOLD    →  star schema: fact_claims + dim_* tables
           │
           ▼
  Athena queries + Streamlit dashboard
